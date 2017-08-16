@@ -814,7 +814,7 @@ int main(int argc, char **argv)
 
 			unsigned int effective_entries = g_t->GetN() + g_b->GetN();
 			// TODO: adjust
-			if (effective_entries < 200)
+			if (effective_entries < 20)
 			{
 				printf("too few entries: %u, skipping.\n", effective_entries);
 				continue;
