@@ -8,8 +8,8 @@ std::vector<std::string> input_files;
 void InitInputFiles()
 {
 	std::string prefix = "root://eostotem.cern.ch//eos/totem/data/ctpps/reconstruction/2017/alignment_run_July/version4-";
-	std::string prefix_pilot = prefix + "pilot";
-	std::string prefix_rest = prefix + "rest";
+	std::string prefix_pilot = prefix + "pilot/";
+	std::string prefix_rest = prefix + "rest/";
 	input_files = {
 		prefix_pilot + "run_298597.0_re_reco.root",
 		prefix_pilot + "run_298597.10_re_reco.root",
