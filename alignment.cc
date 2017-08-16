@@ -821,6 +821,7 @@ int main(int argc, char **argv)
 			}
 			printf("4\n");
 			// get y ranges
+			printf("%i\n", units[ui]);
 			const Analysis::AlignmentYRange &r = anal.alignmentYRanges[units[ui]];
 			printf("5\n");
 			sprintf(buf, "unit %s", units[ui].c_str());
