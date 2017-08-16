@@ -113,7 +113,7 @@ void Init_45b_56t()
 {
 	// analysis settings
 	anal.cut1_a = 1.; anal.cut1_c =  7.2E-4; anal.cut1_si = 4.3E-4;
-	anal.cut2_a = 1.; anal.cut2_c = 5.5E-5; anal.cut2_si = 1E-4;
+	anal.cut2_a = 1.; anal.cut2_c = 5.0E-4; anal.cut2_si = 5E-5;
 
 	anal.cut3_c = 0.4; anal.cut3_si = 0.05;
 	anal.cut4_c = -0.35; anal.cut4_si = 0.045;
@@ -143,7 +143,7 @@ void Init_45t_56b()
 {
 	// analysis settings
 	anal.cut1_a = 1.; anal.cut1_c =  5.1E-4; anal.cut1_si = 4.9E-4;
-	anal.cut2_a = 1.; anal.cut2_c =  0.; anal.cut2_si = 8.5E-5;
+	anal.cut2_a = 1.; anal.cut2_c =  4.9E-4.; anal.cut2_si = 4.4E-5;
 
 	anal.cut3_c = -0.09; anal.cut3_si = 0.09;
 	anal.cut4_c = 0.22; anal.cut4_si = 0.05;
