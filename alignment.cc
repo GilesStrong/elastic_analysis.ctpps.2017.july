@@ -801,10 +801,10 @@ int main(int argc, char **argv)
 			printf("1\n");
 			sprintf(buf, "alignment/%i/", periods[pi]);
 			printf("2\n");
-			printf("%i\n", units[ui].c_str());
-			TGraph *g_t = (TGraph *) inF_45t->Get((string(buf)+"g_y_"+units[ui].c_str()+"_vs_x_"+units[ui].c_str()+"_sel").c_str());
+			printf("%s\n", units[ui].c_str());
+			TGraph *g_t = (TGraph *) inF_45t->Get((string(buf)+"g_y_"+units[ui]+"_vs_x_"+units[ui]+"_sel").c_str());
 			TGraph *gw_t = (TGraph *) inF_45t->Get((string(buf)+"g_w_vs_timestamp_sel").c_str());
-			TGraph *g_b = (TGraph *) inF_45b->Get((string(buf)+"g_y_"+units[ui].c_str()+"_vs_x_"+units[ui].c_str()+"_sel").c_str());
+			TGraph *g_b = (TGraph *) inF_45b->Get((string(buf)+"g_y_"+units[ui]+"_vs_x_"+units[ui]+"_sel").c_str());
 			TGraph *gw_b = (TGraph *) inF_45b->Get((string(buf)+"g_w_vs_timestamp_sel").c_str());
 			printf("3\n");
 			if (units[ui][0] == 'R')
