@@ -801,6 +801,7 @@ int main(int argc, char **argv)
 			printf("1\n");
 			sprintf(buf, "alignment/%i/", periods[pi]);
 			printf("2\n");
+			printf("%i\n", units[ui]);
 			TGraph *g_t = (TGraph *) inF_45t->Get((string(buf)+"g_y_"+units[ui]+"_vs_x_"+units[ui]+"_sel").c_str());
 			TGraph *gw_t = (TGraph *) inF_45t->Get((string(buf)+"g_w_vs_timestamp_sel").c_str());
 			TGraph *g_b = (TGraph *) inF_45b->Get((string(buf)+"g_y_"+units[ui]+"_vs_x_"+units[ui]+"_sel").c_str());
@@ -827,7 +828,6 @@ int main(int argc, char **argv)
 			}
 			printf("5\n");
 			// get y ranges
-			printf("%i\n", units[ui]);
 			const Analysis::AlignmentYRange &r = anal.alignmentYRanges[units[ui]];
 			printf("6\n");
 			sprintf(buf, "unit %s", units[ui].c_str());
