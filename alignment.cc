@@ -808,8 +808,11 @@ int main(int argc, char **argv)
 			printf("3\n");
 			if (units[ui][0] == 'R')
 			{
+				printf("3.1\n");
 				swap(g_t, g_b);
+				printf("3.2\n");
 				swap(gw_t, gw_b);
+				printf("3.3\n");
 			}
 			printf("4\n");
 			unsigned int effective_entries = g_t->GetN() + g_b->GetN();
