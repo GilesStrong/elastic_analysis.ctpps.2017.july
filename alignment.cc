@@ -819,27 +819,27 @@ int main(int argc, char **argv)
 				printf("too few entries: %u, skipping.\n", effective_entries);
 				continue;
 			}
-			printf("4\n");
+			printf("5\n");
 			// get y ranges
 			printf("%i\n", units[ui]);
 			const Analysis::AlignmentYRange &r = anal.alignmentYRanges[units[ui]];
-			printf("5\n");
+			printf("6\n");
 			sprintf(buf, "unit %s", units[ui].c_str());
 			TDirectory *unitDir = perDir->mkdir(buf);
-			printf("6\n");
+			printf("7\n");
 			fixTilt = false;
 			if (units[ui] == "R_1_N")
 			{
 				fixTilt = true;
 				fixTiltValue = 20E-3;
 			}
-			printf("7\n");
+			printf("8\n");
 			gDirectory = unitDir->mkdir("horizontal");
 			DoHorizontalAlignment(g_t, g_b, r, results[units[ui]], periods[pi]);
-			printf("8\n");
+			printf("9\n");
 			gDirectory = unitDir->mkdir("vertical");
 			DoVerticalAlignment(g_t, gw_t, g_b, gw_b, r, results[units[ui]], periods[pi]);
-			printf("9\n");
+			printf("10\n");
 		}
 	}
 
