@@ -87,7 +87,7 @@ void Init_base()
 #endif
 
 	anal.alignment_t0 = 0.;			// beginning of the first time-slice
-	anal.alignment_ts = 60.*60.;	// time-slice in s
+	anal.alignment_ts = 120.*60.;	// time-slice in s
 	
 	// Old
 	/*anal.alignmentYRanges["L_1_F"] = Analysis::AlignmentYRange(-17., -3.5, +3.9, 17.);
