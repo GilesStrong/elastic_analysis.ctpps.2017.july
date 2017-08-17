@@ -769,10 +769,10 @@ int main(int argc, char **argv)
 	char buf[1000];
 
 	vector<string> units;
-	units.push_back("L_1_N");
-	units.push_back("L_1_F");
-	units.push_back("R_1_N");
-	units.push_back("R_1_F");
+ 	units.push_back("L_2_F");
+ 	units.push_back("L_1_F");
+  	units.push_back("R_1_F");
+  	units.push_back("R_2_F");
 
 	// get list of periods
 	vector<signed int> periods;
@@ -798,57 +798,37 @@ int main(int argc, char **argv)
 		for (unsigned int ui = 0; ui < units.size(); ui++)
 		{
 			printf("\n---------- unit %s ----------\n\n", units[ui].c_str());
-			printf("1\n");
 			sprintf(buf, "alignment/%i/", periods[pi]);
-			printf("2\n");
-			printf("%s\n", units[ui].c_str());
 			TGraph *g_t = (TGraph *) inF_45t->Get((string(buf)+"g_y_"+units[ui]+"_vs_x_"+units[ui]+"_sel").c_str());
 			TGraph *gw_t = (TGraph *) inF_45t->Get((string(buf)+"g_w_vs_timestamp_sel").c_str());
 			TGraph *g_b = (TGraph *) inF_45b->Get((string(buf)+"g_y_"+units[ui]+"_vs_x_"+units[ui]+"_sel").c_str());
 			TGraph *gw_b = (TGraph *) inF_45b->Get((string(buf)+"g_w_vs_timestamp_sel").c_str());
-			printf("3\n");
 			if (units[ui][0] == 'R')
 			{
-				printf("3.1\n");
 				swap(g_t, g_b);
-				printf("3.2\n");
 				swap(gw_t, gw_b);
-				printf("3.3\n");
 			}
-			printf("4\n");
-			printf("%i\n", g_t->GetN());
-			printf("%i\n", g_b->GetN());
-			printf("4.01\n");
 			unsigned int effective_entries = g_t->GetN() + g_b->GetN();
-			printf("4.1\n");
 			// TODO: adjust
 			if (effective_entries < 200)
 			{
-				printf("4.2\n");
 				printf("too few entries: %u, skipping.\n", effective_entries);
-				printf("4.3\n");
 				continue;
 			}
-			printf("5\n");
 			// get y ranges
 			const Analysis::AlignmentYRange &r = anal.alignmentYRanges[units[ui]];
-			printf("6\n");
 			sprintf(buf, "unit %s", units[ui].c_str());
 			TDirectory *unitDir = perDir->mkdir(buf);
-			printf("7\n");
 			fixTilt = false;
 			if (units[ui] == "R_1_N")
 			{
 				fixTilt = true;
 				fixTiltValue = 20E-3;
 			}
-			printf("8\n");
 			gDirectory = unitDir->mkdir("horizontal");
 			DoHorizontalAlignment(g_t, g_b, r, results[units[ui]], periods[pi]);
-			printf("9\n");
 			gDirectory = unitDir->mkdir("vertical");
 			DoVerticalAlignment(g_t, gw_t, g_b, gw_b, r, results[units[ui]], periods[pi]);
-			printf("10\n");
 		}
 	}
 
