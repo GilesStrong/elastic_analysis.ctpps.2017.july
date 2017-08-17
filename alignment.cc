@@ -816,7 +816,7 @@ int main(int argc, char **argv)
 				printf("3.3\n");
 			}
 			printf("4\n");
-			printf(string(buf)+"g_y_"+units[ui]+"_vs_x_"+units[ui]+"_sel\n");
+			printf((string(buf)+"g_y_"+units[ui]+"_vs_x_"+units[ui]+"_sel\n").c_str());
 			printf("%i\n", g_t->GetN());
 			printf("%i\n", g_b->GetN());
 			printf("4.01\n");
