@@ -117,7 +117,7 @@ void Init_45b_56t()
 	anal.cut3_c = 0.47; anal.cut3_si = 0.058;
 	anal.cut4_c = -0.045; anal.cut4_si = 0.036;
 	
-	anal.cut5_a = 0.0; anal.cut5_c = 0.15; anal.cut5_si = 10.0;
+	anal.cut5_a = -0.16; anal.cut5_c = -0.58; anal.cut5_si = 0.023;
 	anal.cut6_a = 0.0; anal.cut6_c = 0.15; anal.cut6_si = 10.0;
 
 	anal.cut7_a = 0.0; anal.cut7_c = 0.5; anal.cut7_si = 10.0;
