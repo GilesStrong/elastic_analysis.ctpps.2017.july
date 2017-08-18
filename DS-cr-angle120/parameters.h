@@ -112,7 +112,7 @@ void Init_45b_56t()
 {
 	// analysis settings
 	anal.cut1_a = 1.; anal.cut1_c =  5.7E-4; anal.cut1_si = 3.9E-4;
-	anal.cut2_a = 1.; anal.cut2_c = 5.4E-4; anal.cut2_si = 5.2E-5;
+	anal.cut2_a = 1.; anal.cut2_c = 5.6E-4; anal.cut2_si = 5.2E-5;
 
 	anal.cut3_c = 0.45; anal.cut3_si = 10.0;
 	anal.cut4_c = -0.038; anal.cut4_si = 10.0;
