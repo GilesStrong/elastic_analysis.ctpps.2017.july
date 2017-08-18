@@ -111,7 +111,7 @@ void Init_base()
 void Init_45b_56t()
 {
 	// analysis settings
-	anal.cut1_a = 1.; anal.cut1_c =  0.001; anal.cut1_si = 4.4E-4;
+	anal.cut1_a = 1.; anal.cut1_c =  0.0008; anal.cut1_si = 4.4E-4;
 	anal.cut2_a = 1.; anal.cut2_c = +10E-6; anal.cut2_si = 30E-6;
 
 	anal.cut3_c = 0.01; anal.cut3_si = 0.07;
@@ -141,7 +141,7 @@ void Init_45b_56t()
 void Init_45t_56b()
 {
 	// analysis settings
-	anal.cut1_a = 1.; anal.cut1_c = 0.0008; anal.cut1_si = 4.9E-4;
+	anal.cut1_a = 1.; anal.cut1_c = 0.0007; anal.cut1_si = 4.9E-4;
 	anal.cut2_a = 1.; anal.cut2_c = -10E-6; anal.cut2_si = 30E-6;
 
 	anal.cut3_c = 0.0; anal.cut3_si = 0.07;
