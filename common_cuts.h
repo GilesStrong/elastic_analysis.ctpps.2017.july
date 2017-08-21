@@ -24,14 +24,14 @@ void Analysis::BuildCuts()
 	ccb[3] = 1.;
 	ccc[3] = cut3_c;
 	csi[3] = cut3_si;
-	//cuts.push_back(3);
+	cuts.push_back(3);
 	
 	cqaN[4] = "#theta_{x}^{L}"; cqbN[4] = "vtx_{x}^{L}";
 	cca[4] = -cut4_a;
 	ccb[4] = 1.;
 	ccc[4] = cut4_c;
 	csi[4] = cut4_si;
-	//cuts.push_back(4);
+	cuts.push_back(4);
 	
 	cqaN[5] = "y^{R,2,F}"; cqbN[5] = "y^{R,2,F} - y^{R,1,F}";
 	cca[5] = -cut5_a;
