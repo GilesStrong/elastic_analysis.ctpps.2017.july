@@ -117,7 +117,7 @@ void Init_45b_56t()
 	anal.cut3_c = 0.49; anal.cut3_si = 0.055;
 	anal.cut4_c = -0.03; anal.cut4_si = 0.033;
 	
-	anal.cut5_a = -0.06; anal.cut5_c = -0.17; anal.cut5_si = 0.022;
+	anal.cut5_a = -0.1; anal.cut5_c = -0.35; anal.cut5_si = 0.032;
 	anal.cut6_a = 0.0; anal.cut6_c = 0.15; anal.cut6_si = 10.0;
 
 	anal.cut7_a = 0.0; anal.cut7_c = 0.55; anal.cut7_si = 10.0;
@@ -148,7 +148,7 @@ void Init_45t_56b()
 	anal.cut4_c = -0.055; anal.cut4_si = 0.031;
 	
 	anal.cut5_a = 0.0; anal.cut5_c = -0.48; anal.cut5_si = 10.0;
-	anal.cut6_a = 0.0; anal.cut6_c = 0.48; anal.cut6_si = 10.0;
+	anal.cut6_a = -0.14; anal.cut6_c = 0.1; anal.cut6_si = 0.32;
 
 	anal.cut7_a = 0.0; anal.cut7_c = 0.8; anal.cut7_si = 10.0;
 
