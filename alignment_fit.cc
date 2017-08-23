@@ -118,10 +118,11 @@ int main(int argc, char **argv)
 	char buf[1000];
 
 	vector<string> units;
- 	units.push_back("L_2_F");
- 	units.push_back("L_1_F");
-  	units.push_back("R_1_F");
-  	units.push_back("R_2_F");
+
+	units.push_back("L_2_F");
+	units.push_back("L_1_F");
+	units.push_back("R_1_F");
+	units.push_back("R_2_F");
 
 	vector<GraphSet> graphs;
 

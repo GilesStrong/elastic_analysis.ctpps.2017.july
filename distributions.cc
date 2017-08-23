@@ -430,25 +430,22 @@ int main(int argc, char **argv)
 		double x_min=0., x_max=0., y_min=0., y_max = 0.;
 		double q_max = 0.;
 
-		if (i == 1) { x_min = -600E-6; x_max = +600E-6; y_min = -600E-6; y_max = 600E-6; q_max = 600E-6; }
-		if (i == 2) { x_min = -600E-6; x_max = +600E-6; y_min = -600E-6; y_max = 600E-6; q_max = 600E-6; }
+		if (i == 1) { x_min = -2000E-6; x_max = +2000E-6; y_min = -2000E-6; y_max = 2000E-6; q_max = 2000E-6; }
+		if (i == 2) { x_min = -1000E-6; x_max = +1000E-6; y_min = -1000E-6; y_max = 1000E-6; q_max = 500E-6; }
 		if (i == 3) { x_min = -1000E-6; x_max = +1000E-6; y_min = -1.; y_max = 1.; q_max = 2.; }
 		if (i == 4) { x_min = -1000E-6; x_max = +1000E-6; y_min = -1.; y_max = 1.; q_max = 2.; }
-		if (i == 5) { x_min = -6.; x_max = +6.; y_min = -1.; y_max = 1.; q_max = 500E-3; }
-		if (i == 6) { x_min = -6.; x_max = +6.; y_min = -1.; y_max = 1.; q_max = 500E-3; }
-		if (i == 7) { x_min = -600E-6; x_max = +600E-6; y_min = -0.2; y_max = +0.2; q_max = 100E-3; }
+		if (i == 5) { x_min = -3.; x_max = +7.; y_min = -1.5; y_max = 1.5; q_max = 1000E-3; }
+		if (i == 6) { x_min = -3.; x_max = +7.; y_min = -1.5; y_max = 1.5; q_max = 1000E-3; }
+		if (i == 7) { x_min = -1000E-6; x_max = +1000E-6; y_min = -1.; y_max = +1.; q_max = 1000E-3; }
 		if (i == 8) { x_min = -600E-6; x_max = +600E-6; y_min = -4.; y_max = +4.; q_max = 500E-3; }
 
-		// TODO
-		x_min = 0.; x_max = 0.; y_min = 0.; y_max = 0.; q_max = 0.;
-		
-		sprintf(name, "h_cq%i", i); sprintf(title, ";cq%i", i); h_cq[i] = new TH1D(name, title, 300, -q_max, +q_max);
+		sprintf(name, "h_cq%i", i); sprintf(title, ";cq%i", i); h_cq[i] = new TH1D(name, title, 100, -q_max, +q_max);
 
 		sprintf(name, "h2_cq%i", i); sprintf(title, ";%s;%s", anal.cqaN[i].c_str(), anal.cqbN[i].c_str()); h2_cq[i] = new TH2D(name, title, 100, x_min, x_max, 100, y_min, y_max);
 		sprintf(name, "h2_cq_full%i", i); sprintf(title, ";%s;%s", anal.cqaN[i].c_str(), anal.cqbN[i].c_str()); h2_cq_full[i] = new TH2D(name, title, 100, x_min, x_max, 100, y_min, y_max);
 
 		sprintf(name, "g_cq%i", i); sprintf(title, ";%s;%s", anal.cqaN[i].c_str(), anal.cqbN[i].c_str()); g_cq[i] = new TGraph(); g_cq[i]->SetName(name); g_cq[i]->SetTitle(title);
-		sprintf(name, "p_cq%i", i); sprintf(title, ";%s;%s", anal.cqaN[i].c_str(), anal.cqbN[i].c_str()); p_cq[i] = new TProfile(name, title, 300, 0., 0.);
+		sprintf(name, "p_cq%i", i); sprintf(title, ";%s;%s", anal.cqaN[i].c_str(), anal.cqbN[i].c_str()); p_cq[i] = new TProfile(name, title, 300, x_min, x_max);
 		sprintf(name, "p_cq_time%i", i); sprintf(title, ";time   (s);mean of cq%i", i); p_cq_time[i] = new TProfile(name, title, 240, 6E3-0.5, 30E3+0.5);
 	}
 	
@@ -781,16 +778,14 @@ int main(int argc, char **argv)
 		ch_in->GetEntry(ev_idx);
 
 		// remove troublesome runs
-		unsigned int run = ev.run_num / 100000;
-		unsigned int file = ev.run_num % 100000;
-		if (SkipRun(run, file, true))
+		if (SkipRun(ev.run_num))
 			continue;
 
 		// update timestamp run boundaries
-		auto rtbit = runTimestampBoundaries.find(run);
+		auto rtbit = runTimestampBoundaries.find(ev.run_num);
 		if (rtbit == runTimestampBoundaries.end())
 		{
-			runTimestampBoundaries.insert({run, {ev.timestamp, ev.timestamp}});
+			runTimestampBoundaries.insert({ev.run_num, {ev.timestamp, ev.timestamp}});
 		} else {
 			rtbit->second.first = min(rtbit->second.first, ev.timestamp);
 			rtbit->second.second = max(rtbit->second.second, ev.timestamp);
@@ -822,7 +817,7 @@ int main(int argc, char **argv)
 		//g_timestamp_vs_ev_idx_dgn->SetPoint(g_timestamp_vs_ev_idx_dgn->GetN(), ev_idx, ev.timestamp);
 
 		// select the elastic-trigger bunch(es) only
-		if (SkipBunch(run, ev.bunch_num))
+		if (SkipBunch(ev.run_num, ev.bunch_num))
 			continue;
 
 		// zero bias event?

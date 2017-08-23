@@ -33,10 +33,10 @@ void Init_base()
 
 	alSrc.cnst.a_L_1_F = 0E-3; alSrc.cnst.b_L_1_F = 0.; alSrc.cnst.c_L_1_F = 0E-3;
 	alSrc.cnst.a_L_1_N = 0E-3; alSrc.cnst.b_L_1_N = 0.; alSrc.cnst.c_L_1_N = 0E-3;
-                                                                       
+
 	alSrc.cnst.a_R_1_N = 0E-3; alSrc.cnst.b_R_1_N = 0.; alSrc.cnst.c_R_1_N = 0E-3;
 	alSrc.cnst.a_R_1_F = 0E-3; alSrc.cnst.b_R_1_F = 0.; alSrc.cnst.c_R_1_F = 0E-3;
-	
+
 	alignmentSources.push_back(alSrc);
 	*/
 
@@ -47,7 +47,7 @@ void Init_base()
 	// TODO
 	anal.t_min = 0.; anal.t_max = 0.5;
 	anal.t_min_full = 0.; anal.t_max_full = 0.8;
-	
+
 	// approximate (time independent) resolutions
 	// TODO
 	anal.si_th_y_1arm = 1.7E-6 / sqrt(2.);
@@ -66,7 +66,7 @@ void Init_base()
 	// analysis settings
 	anal.th_x_lcut = -1.;	
 	anal.th_x_hcut = +1.;
-	
+
 #if 0
 	anal.use_time_dependent_resolutions = false;
 
@@ -78,21 +78,22 @@ void Init_base()
 	anal.inefficiency_trigger = 0.;
 
 	anal.bckg_corr = 1.;
-	
+
 	anal.L_int_eff = 0.;	// mb^-1, diagonal dependent
-	
+
 	anal.eff_th_y_min = 200E-6; // TODO
-	
+
 	anal.t_min_fit = 0.027; // TODO
 #endif
 
-	anal.alignment_t0 = 0.;			// beginning of the first time-slice
-	anal.alignment_ts = 1200.*60.;	// time-slice in s
-	
+	anal.alignment_t0 = 65832;		// beginning of the first time-slice
+	anal.alignment_ts = 145.*60.;	// time-slice in s
+
+	// TODO
 	anal.alignmentYRanges["L_2_F"] = Analysis::AlignmentYRange(-40., +10, -10., +40);
-  	anal.alignmentYRanges["L_1_F"] = Analysis::AlignmentYRange(-40., +10, -10., +40);
-  	anal.alignmentYRanges["R_1_F"] = Analysis::AlignmentYRange(-40., +10, -10., +40);
-  	anal.alignmentYRanges["R_2_F"] = Analysis::AlignmentYRange(-40., +10, -10., +40);
+	anal.alignmentYRanges["L_1_F"] = Analysis::AlignmentYRange(-40., +10, -10., +40);
+	anal.alignmentYRanges["R_1_F"] = Analysis::AlignmentYRange(-40., +10, -10., +40);
+	anal.alignmentYRanges["R_2_F"] = Analysis::AlignmentYRange(-40., +10, -10., +40);
 
 #if 0
 	// TODO
@@ -111,6 +112,7 @@ void Init_base()
 void Init_45b_56t()
 {
 	// analysis settings
+	//Giles cuts
 	anal.cut1_a = 1.; anal.cut1_c =  7.2E-4; anal.cut1_si = 4.3E-4;
 	anal.cut2_a = 1.; anal.cut2_c = 5.0E-4; anal.cut2_si = 5E-5;
 
@@ -122,6 +124,17 @@ void Init_45b_56t()
 
 	anal.cut7_a = 0.0; anal.cut7_c = 0.55; anal.cut7_si = 10.0;
 
+	//Jan cuts
+	/*anal.cut1_a = 1.; anal.cut1_c = -240E-6; anal.cut1_si = 150E-6;
+	anal.cut2_a = 1.; anal.cut2_c = +435E-6; anal.cut2_si = 40E-6;
+
+	//anal.cut3_c = 0.49; anal.cut3_si = 0.055;
+	//anal.cut4_c = -0.03; anal.cut4_si = 0.033;
+
+	anal.cut5_a = -0.09; anal.cut5_c = -0.29; anal.cut5_si = 0.04;
+	anal.cut6_a = -0.09; anal.cut6_c = 0.15; anal.cut6_si = 0.04;
+
+	//anal.cut7_a = 0.0; anal.cut7_c = 0.55; anal.cut7_si = 10.0;*/
 	anal.th_y_lcut_L = 13.5E-6; anal.th_y_lcut_R = 14E-6; anal.th_y_lcut = 14.5E-6;
 	anal.th_y_hcut_L = 102E-6; anal.th_y_hcut_R = 102E-6; anal.th_y_hcut = 100E-6;
 
@@ -141,6 +154,7 @@ void Init_45b_56t()
 void Init_45t_56b()
 {
 	// analysis settings
+	//Giles cuts
 	anal.cut1_a = 1.; anal.cut1_c =  5.1E-4; anal.cut1_si = 4.9E-4;
 	anal.cut2_a = 1.; anal.cut2_c =  4.9E-4; anal.cut2_si = 4.4E-5;
 
@@ -151,6 +165,18 @@ void Init_45t_56b()
 	anal.cut6_a = -0.14; anal.cut6_c = 0.1; anal.cut6_si = 0.32;
 
 	anal.cut7_a = 0.0; anal.cut7_c = 0.8; anal.cut7_si = 10.0;
+
+	//Jan cuts
+	/*anal.cut1_a = 1.; anal.cut1_c = -290E-6; anal.cut1_si = 150E-6;
+	anal.cut2_a = 1.; anal.cut2_c = +425E-6; anal.cut2_si = 40E-6;
+
+	//anal.cut3_c = 0.43; anal.cut3_si = 0.023;
+	//anal.cut4_c = -0.055; anal.cut4_si = 0.031;
+
+	anal.cut5_a = -0.09; anal.cut5_c = -0.45; anal.cut5_si = 0.04;
+	anal.cut6_a = -0.09; anal.cut6_c = +0.35; anal.cut6_si = 0.04;
+
+	//anal.cut7_a = 0.0; anal.cut7_c = 0.8; anal.cut7_si = 10.0;*/
 
 	anal.th_y_lcut_L = 13.5E-6; anal.th_y_lcut_R = 14E-6; anal.th_y_lcut = 14.5E-6;
 	anal.th_y_hcut_L = 102E-6; anal.th_y_hcut_R = 102E-6; anal.th_y_hcut = 100E-6;
